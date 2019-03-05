@@ -1,15 +1,7 @@
-// const typescriptParser = require("typescript-parser");
-// const parser = new typescriptParser.TypescriptParser();
 import * as fs from 'fs';
 import * as ts from 'typescript';
-import { TypescriptParser } from 'typescript-parser';
-import { NodeVisitors } from './NodeVisitors';
-import { ClassVisitor } from './visitors/ClassVisitor';
-import { MethodVisitor } from './visitors/MethodVisitor';
-import { SourceFileVisitor } from './visitors/SourceFileVisitor';
-import { SyntaxKind, ScriptTarget, createSourceFile, TypeElement, MethodDeclaration, createTypeParameterDeclaration, createMethodSignature, createInterfaceDeclaration, createModifier, ScriptKind, NewLineKind, EmitHint, createPrinter, ClassDeclaration, createMethod, InterfaceDeclaration, createNode, Node, ImportDeclaration, createToken } from 'typescript';
+import { ClassDeclaration, createMethodSignature, createNodeArray, createSourceFile, createToken, ImportDeclaration, Node, ScriptTarget, SyntaxKind, TypeElement } from 'typescript';
 import { ClassAnalyser } from './ClassAnalyser';
-import { setFlagsFromString } from 'v8';
 
 export class InterfaceGenerator {
 
@@ -45,36 +37,48 @@ export class InterfaceGenerator {
       const ca = new ClassAnalyser();
 
       // imports
-      importClause.forEach(item => {
-        const id = <ImportDeclaration>item;
-        const name = id.moduleSpecifier.getText().replace(/\'/gm, '').replace(/\"/gm, '');
-        const imp = ts.createImportDeclaration(
-          id.decorators,
-          id.modifiers,
-          id.importClause,
-          ts.createStringLiteral(name)
-        );
-        nodes.push(imp);
-      });
+      const imports = this.getImports(importClause);
 
-      nodes.push(createToken(SyntaxKind.NewLineTrivia));
+      if (imports.length >= 0) {
+        imports.forEach(item => nodes.push(item));
+        nodes.push(createToken(SyntaxKind.NewLineTrivia));
+      }
 
+      // Get all class declarations
       classDeclarations.forEach(c => {
+        // Generate interface code
         const generatedInterface = ca.extractInterface(<any>c as ClassDeclaration);
+        // and add to nodes
         nodes.push(<any>generatedInterface);
+        // add a new line
         nodes.push(createToken(SyntaxKind.NewLineTrivia));
       })
 
-      const list = ts.createNodeArray(nodes);
+      const list = createNodeArray(nodes);
 
       const sf = ca.createFile(ca.className, list);
       result = sf.text;
-      console.log(sf.text);
       this.resultMessage = 'Interface generated.';
     }
 
     return result;
     // this.visit(sourceFile);
+  }
+
+  getImports(importClause: Node[]): ImportDeclaration[] {
+    const result = importClause.map(item => {
+      const id = <ImportDeclaration>item;
+      const name = id.moduleSpecifier.getText().replace(/\'/gm, '').replace(/\"/gm, '');
+      const imp = ts.createImportDeclaration(
+        id.decorators,
+        id.modifiers,
+        id.importClause,
+        ts.createStringLiteral(name)
+      );
+      return imp;
+    });
+
+    return result;
   }
 
   visit(node: Node) {

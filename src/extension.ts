@@ -23,28 +23,29 @@ export function activate(context: vscode.ExtensionContext) {
     if (editor !== undefined) {
       const { document, selection } = editor;
 
+      // Get path
       const rootPath = vscode.workspace.rootPath;
-      const filePath = document.uri.fsPath;
-      const fileName = `I${path.basename(filePath)}`;
-      const newFileName = path.join(rootPath, fileName);
+      const sourceFilePath = document.uri.fsPath;
+      const newInterfaceFileName = path.join(rootPath, `I${path.basename(sourceFilePath)}`);
 
-      fs.closeSync(fs.openSync(newFileName, 'w'))
-      const newInterface = await generator.generate(filePath);
+      // Create new interface file
+      fs.closeSync(fs.openSync(newInterfaceFileName, 'w'))
 
-      const doc = await vscode.workspace.openTextDocument(newFileName);
-      // const doc = await vscode.workspace.openTextDocument(
-      //   {
-      //     content: newInterface,
-      //     language: 'typescript'
-      //   }
-      // );
+      // Generate interface
+      const newInterface = await generator.generate(sourceFilePath);
 
+      // Open document
+      const doc = await vscode.workspace.openTextDocument(newInterfaceFileName);
 
+      // Insert interface text
       const newEditor = await vscode.window.showTextDocument(doc);
       newEditor.edit((ed) => {
         ed.insert(doc.positionAt(0), newInterface);
       });
+
+      // And save
       await doc.save()
+
       // Display a message box to the user
       vscode.window.showInformationMessage(generator.resultMessage);
     }
