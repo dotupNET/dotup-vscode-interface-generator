@@ -32,11 +32,11 @@ https://marketplace.visualstudio.com/items?itemName=dotup.dotup-vscode-interface
 
 ## Usage
 
-1. Open a typescript class definition file.
+## 1. Open a typescript class definition file.
 
 ![dotup-vscode-interface-generator Screenshot](https://raw.githubusercontent.com/dotupNET/dotup-vscode-interface-generator/master/images/1_InterfaceGenerator.png)
 
-2. Press `Ctrl+Shift+P` to see all commands and start typing `Generate interface` and hit `Enter`.
+## 2. Press `Ctrl+Shift+P` to see all commands and start typing `Generate interface` and hit `Enter`.
 
 ![dotup-vscode-interface-generator Screenshot](https://raw.githubusercontent.com/dotupNET/dotup-vscode-interface-generator/master/images/2_InterfaceGenerator.png)
 
