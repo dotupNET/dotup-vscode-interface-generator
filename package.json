@@ -1,12 +1,17 @@
 {
   "name": "dotup-vscode-interface-generator",
   "displayName": "Interface generator",
-  "description": "Create interface from typescript class",
-  "version": "1.0.4",
+  "description": "Create interface declaration file from typescript class",
+  "version": "1.0.5",
   "engines": {
     "vscode": "^1.31.0"
   },
   "categories": [
+    "Extension Packs",
+    "Formatters",
+    "Language Packs",
+    "Programming Languages",
+    "Snippets",
     "Other"
   ],
   "activationEvents": [
@@ -15,7 +20,7 @@
   "main": "./out/extension.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dotupNET/dotup-vscode-interface-generator.git"
+    "url": "https://github.com/dotupNET/dotup-vscode-interface-generator.git"
   },
   "keywords": [
     "vscode",
@@ -27,6 +32,7 @@
   "publisher": "dotup",
   "author": "Peter Ullrich, dotup IT solutions",
   "license": "MIT",
+  "icon": "images/tsi_logo_128.png",
   "contributes": {
     "commands": [
       {
