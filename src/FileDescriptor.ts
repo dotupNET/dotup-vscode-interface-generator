@@ -1,4 +1,4 @@
-import { MethodSignature, PropertySignature, Node, TypeElement, TypeParameterDeclaration, Modifier, HeritageClause, ImportDeclaration } from 'typescript';
+import { ImportDeclaration, Node } from 'typescript';
 import { InterfaceDescriptor } from './InterfaceDescriptor';
 export class FileDescriptor {
   // source

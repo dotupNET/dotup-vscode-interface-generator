@@ -1,4 +1,4 @@
-import { MethodSignature, PropertySignature, Node, TypeElement, TypeParameterDeclaration, Modifier, HeritageClause } from 'typescript';
+import { HeritageClause, MethodSignature, Modifier, Node, PropertySignature, TypeElement, TypeParameterDeclaration } from 'typescript';
 export class InterfaceDescriptor {
   methods: MethodSignature[];
   properties: PropertySignature[];
