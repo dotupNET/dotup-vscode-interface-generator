@@ -2,7 +2,7 @@
   "name": "dotup-vscode-interface-generator",
   "displayName": "Interface generator",
   "description": "Create interface declaration file from typescript class",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "engines": {
     "vscode": "^1.16.0"
   },
