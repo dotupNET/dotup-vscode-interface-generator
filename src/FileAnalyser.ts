@@ -132,8 +132,8 @@ export class FileAnalyser {
   }
 
   getInterfaceDeclaration(item: InterfaceDescriptor): string {
-    const result = item.classDeclaration.replace('class', 'interface');
-
+    let result = item.classDeclaration.replace('class', 'interface');
+    result = result.replace(item.className, item.interfaceName);
     // export class ExtendsOnly<XY, TG extends string> extends ABC {
     // =>
     // export class ExtendsOnly<XY, TG extends string>
