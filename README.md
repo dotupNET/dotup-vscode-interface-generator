@@ -2,7 +2,7 @@
 
 ## Description
 
-Interface generator is a VSCode Extension which creates interface files from a typescript class.
+Interface generator is a VSCode Extension which creates an interface definition from a typescript class.
 
 `Given class:`
 
@@ -34,7 +34,7 @@ https://marketplace.visualstudio.com/items?itemName=dotup.dotup-vscode-interface
 
 ## Usage
 
-### 1. Open a typescript class definition file.
+### 1. Open a typescript file with one or more class definitions.
 
 ![dotup-vscode-interface-generator Screenshot](https://raw.githubusercontent.com/dotupNET/dotup-vscode-interface-generator/master/images/1_InterfaceGenerator.png)
 
