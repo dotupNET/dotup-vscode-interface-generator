@@ -24,7 +24,6 @@
     "generator",
     "interface generator"
   ],
-  "publisher": {},
   "author": "Peter Ullrich, dotup IT solutions",
   "license": "MIT",
   "contributes": {
