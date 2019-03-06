@@ -57,8 +57,8 @@ TODO:
 ### 1.0.4
 
 Fixed:
--Readme: pictures not shown.
--Readme: Wrong 'Generate interface' example
+- Readme: pictures not shown.
+- Readme: Wrong 'Generate interface' example
 
 TODO:
 - take over comments ( For classes, methods and properties )
