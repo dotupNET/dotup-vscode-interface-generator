@@ -1,14 +1,8 @@
 // tslint:disable
 import { InterfaceDeclaration } from 'typescript';
+import { IEmptyInterface, EmptyClass } from './Class2';
 
-class ABC {
-
-}
-export interface abx {
-
-}
-
-export class ExtendsOnly<XY, TG extends string> extends ABC {
+export class ExtendsOnly<A, B extends string> extends EmptyClass {
   public prop1: number = 2;
   public PublicProp1?: string = '';
   private PrivateProp1: string = '';
@@ -37,7 +31,7 @@ export class ExtendsOnly<XY, TG extends string> extends ABC {
   }
 }
 
-export class ImplementsOnly<XY, TG extends string> implements abx {
+export class ImplementsOnly<C, D extends string> implements IEmptyInterface {
   public prop1: number = 2;
   public PublicProp1?: string = '';
   private PrivateProp1: string = '';
@@ -66,7 +60,7 @@ export class ImplementsOnly<XY, TG extends string> implements abx {
   }
 }
 
-export class ExtendsAndImplements<XY, TG extends string> extends ABC implements abx {
+export class ExtendsAndImplements<E, F extends string> extends EmptyClass implements IEmptyInterface {
   public prop1: number = 2;
   public PublicProp1?: string = '';
   private PrivateProp1: string = '';
@@ -95,7 +89,7 @@ export class ExtendsAndImplements<XY, TG extends string> extends ABC implements 
   }
 }
 
-export class ExtendsAndImplementsWithoutTypeParameter extends ABC implements abx {
+export class ExtendsAndImplementsWithoutTypeParameter extends EmptyClass implements IEmptyInterface {
   public prop1: number = 2;
   public PublicProp1?: string = '';
   private PrivateProp1: string = '';

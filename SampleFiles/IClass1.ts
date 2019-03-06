@@ -1,10 +1,7 @@
 import { InterfaceDeclaration } from "typescript";
+import { IEmptyInterface, EmptyClass } from "./Class2";
 
-interface IABC {
-
-
-}
-export interface IExtendsOnly<XY, TG extends string> extends IABC {
+export interface IExtendsOnly<A, B extends string> extends EmptyClass {
   prop1: number;
   PublicProp1?: string;
 
@@ -14,7 +11,7 @@ export interface IExtendsOnly<XY, TG extends string> extends IABC {
   PublicMethodWithoutPublicString<T>(arg: string): T;
 
 }
-export interface IImplementsOnly<XY, TG extends string> {
+export interface IImplementsOnly<C, D extends string> {
   prop1: number;
   PublicProp1?: string;
 
@@ -24,7 +21,7 @@ export interface IImplementsOnly<XY, TG extends string> {
   PublicMethodWithoutPublicString<T>(arg: string): T;
 
 }
-export interface IExtendsAndImplements<XY, TG extends string> extends IABC {
+export interface IExtendsAndImplements<E, F extends string> extends EmptyClass {
   prop1: number;
   PublicProp1?: string;
 
@@ -34,7 +31,7 @@ export interface IExtendsAndImplements<XY, TG extends string> extends IABC {
   PublicMethodWithoutPublicString<T>(arg: string): T;
 
 }
-export interface IExtendsAndImplementsWithoutTypeParameter extends IABC {
+export interface IExtendsAndImplementsWithoutTypeParameter extends EmptyClass {
   prop1: number;
   PublicProp1?: string;
 
