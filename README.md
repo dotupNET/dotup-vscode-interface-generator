@@ -48,13 +48,14 @@ Existing files will be overwritten!
 
 
 ## Release Notes
-### 1.0.7
+### 1.0.8
 
 Fixed:
 - Readme: pictures not shown.
 - Readme: Wrong 'Generate interface' example
 - Icon added
 - dependencies missed
+- Wrong target path on Multi-root Workspaces
 
 TODO:
 - take over comments ( For classes, methods and properties )
