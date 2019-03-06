@@ -50,15 +50,16 @@ Existing files will be overwritten!
 
 
 ## Release Notes
-### 1.0.9
+### 1.0.10
 
-Fixed:
+Fixes/Features:
 - Readme: pictures not shown.
 - Readme: Wrong 'Generate interface' example
 - Icon added
 - dependencies missed
 - Wrong target path on Multi-root Workspaces
 - prefix on interface name was missing
+- video added
 
 TODO:
 - take over comments ( For classes, methods and properties )
