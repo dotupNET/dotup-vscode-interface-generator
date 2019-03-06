@@ -2,7 +2,7 @@
   "name": "dotup-vscode-interface-generator",
   "displayName": "Interface generator",
   "description": "Create interface from class",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.31.0"
   },
