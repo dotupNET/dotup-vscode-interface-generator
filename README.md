@@ -48,7 +48,7 @@ Existing files will be overwritten!
 
 
 ## Release Notes
-### 1.0.8
+### 1.0.9
 
 Fixed:
 - Readme: pictures not shown.
@@ -56,6 +56,7 @@ Fixed:
 - Icon added
 - dependencies missed
 - Wrong target path on Multi-root Workspaces
+- prefix on interface name was missing
 
 TODO:
 - take over comments ( For classes, methods and properties )
