@@ -1,5 +1,4 @@
 // tslint:disable
-import { createNodeArray } from '../src/beispiel';
 import { InterfaceDeclaration } from 'typescript';
 
 class ABC {

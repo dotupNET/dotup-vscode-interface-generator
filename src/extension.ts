@@ -44,10 +44,10 @@ export function activate(context: vscode.ExtensionContext) {
       out.show(true);
 
       // Get path
-      const rootPath = vscode.workspace.rootPath;
+      //      const rootPath = vscode.workspace.rootPath;
       const sourceFilePath = document.uri.fsPath;
 
-      const fileAnalyser = new FileAnalyser(rootPath, sourceFilePath, out);
+      const fileAnalyser = new FileAnalyser(sourceFilePath, out);
 
       // Generate interface
       fileAnalyser.analyseFile();

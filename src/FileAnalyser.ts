@@ -18,9 +18,9 @@ export class FileAnalyser {
   interfaceFilePath: string;
   out: OutputChannel;
 
-  constructor(rootPath: string, sourceFilePath: string, out: OutputChannel) {
-    this.rootPath = rootPath;
-    this.interfaceFilePath = path.join(rootPath, `I${path.basename(sourceFilePath)}`);
+  constructor(sourceFilePath: string, out: OutputChannel) {
+    this.rootPath = path.dirname(sourceFilePath);
+    this.interfaceFilePath = path.join(this.rootPath, `I${path.basename(sourceFilePath)}`);
     this.fileDescriptor = new FileDescriptor(sourceFilePath);
     this.out = out;
   }
