@@ -48,19 +48,12 @@ Existing files will be overwritten!
 
 
 ## Release Notes
-
-### 1.0.3
-
-Initial release of Interface generator.
-
-TODO:
-- take over comments ( For classes, methods and properties )
-
-### 1.0.4
+### 1.0.5
 
 Fixed:
 - Readme: pictures not shown.
 - Readme: Wrong 'Generate interface' example
+- Icon added
 
 TODO:
 - take over comments ( For classes, methods and properties )
