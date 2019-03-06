@@ -49,4 +49,7 @@ Existing files will be overwritten!
 
 Initial release of Interface generator.
 
+TODO:
+- take over comments ( For classes, methods and properties )
+
 **Enjoy!**
