@@ -3,6 +3,27 @@
 ## Description
 
 Interface generator is a VSCode Extension which creates interface files from a typescript class.
+
+`Given class:`
+
+```typescript
+export class ExtendsOnly<XY, TG extends string> extends ABC implements DEF {
+  public NumberProperty: number = 2;
+}
+```
+
+Since interfaces can not implement anything, `implements DEF` is omitted.
+
+`Generated interface`
+
+```typescript
+export interface IExtendsOnly<XY, TG extends string> extends ABC {
+  public NumberProperty: number = 2;
+}
+```
+
+## Installation
+
 You can browse and install extensions from within VS Code. Press `Ctrl+P` and narrow down the list commands by typing `ext install dotup-vscode-interface-generator`.
 
 ## Usage
