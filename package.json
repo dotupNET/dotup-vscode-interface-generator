@@ -2,7 +2,7 @@
   "name": "dotup-vscode-interface-generator",
   "displayName": "Interface generator",
   "description": "Create interface from class",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.31.0"
   },
@@ -13,6 +13,19 @@
     "onCommand:extension.dotupGenerateInterface"
   ],
   "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotupNET/dotup-vscode-interface-generator.git"
+  },
+  "keywords": [
+    "vscode",
+    "extension",
+    "interface",
+    "generator",
+    "interface generator"
+  ],
+  "author": "Peter Ullrich, dotup IT solutions",
+  "license": "MIT",
   "contributes": {
     "commands": [
       {

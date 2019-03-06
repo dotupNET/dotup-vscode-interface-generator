@@ -1,65 +1,31 @@
-# dotup-vscode-interface-generator README
+# Interface generator for Visual Studio Code
 
-This is the README for your extension "dotup-vscode-interface-generator". After writing up a brief description, we recommend including the following sections.
+## Description
 
-## Features
+Interface generator is a VSCode Extension which creates interface files from a typescript class.
+You can browse and install extensions from within VS Code. Press `Ctrl+P` and narrow down the list commands by typing `ext install dotup-vscode-interface-generator`.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Usage
 
-For example if there is an image subfolder under your extension project workspace:
+1. Open a typescript class definition file.
 
-\!\[feature X\]\(images/feature-x.png\)
+![dotup-vscode-interface-generator Screenshot](https://github.com/dotupNET/dotup-vscode-interface-generator/blob/master/images/1_InterfaceGenerator.png)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+2. Press `Ctrl+Shift+P` to see all commands and start typing `Generate interface` and hit `Enter`.
 
-## Requirements
+![dotup-vscode-interface-generator Screenshot](https://github.com/dotupNET/dotup-vscode-interface-generator/blob/master/images/2_InterfaceGenerator.png)
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+The extension creates a new file in the same folder as the source file.
+The new file has the name of the source file prefixed with `I`.
+Existing files will be overwritten!
 
-## Extension Settings
+![dotup-vscode-interface-generator Screenshot](https://github.com/dotupNET/dotup-vscode-interface-generator/blob/master/images/3_InterfaceGenerator.png)
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Initial release of Interface generator.
 
 **Enjoy!**
