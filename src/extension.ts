@@ -5,12 +5,10 @@ import * as vscode from 'vscode';
 import { FileAnalyser } from './FileAnalyser';
 
 /*
-
-https://code.visualstudio.com/api/working-with-extensions/publishing-extension
-
+  https://code.visualstudio.com/api/working-with-extensions/publishing-extension
 */
 
-export class ThenablePromise<T> { //extends Promise<T> {
+export class ThenablePromise<T> { // extends Promise<T> {
   promise: Promise<T>;
 
   constructor(ten: Thenable<T>) {
@@ -95,6 +93,8 @@ export function activate(context: vscode.ExtensionContext) {
         out.appendLine('Interface generation completed.');
         // await new ThenablePromise(vscode.window.showInformationMessage('Interface generation completed.')).promise;
 
+      } else {
+        vscode.window.showErrorMessage('Invalid source file!');
       }
 
     }

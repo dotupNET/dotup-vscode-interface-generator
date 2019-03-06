@@ -1,10 +1,10 @@
-import { NodeVisitors } from '../NodeVisitors';
 import * as ts from 'typescript';
+import { NodeVisitors } from './NodeVisitors';
 
 export class MethodVisitor extends NodeVisitors {
   kind: ts.SyntaxKind = ts.SyntaxKind.MethodDeclaration;
   visitNode(node: ts.Node): void {
-    const identifier = node as ts.MethodDeclaration;
+    const identifier = <ts.MethodDeclaration>node;
     const name = ts.getNameOfDeclaration(identifier);
 
     const x = ts.createMethodSignature(
@@ -28,10 +28,10 @@ export class MethodVisitor extends NodeVisitors {
     if (item === undefined) {
       return item;
     }
-    if (item.pos) {
+    if (item.pos !== undefined) {
       item.pos = -1;
     }
-    if (item.end) {
+    if (item.end !== undefined) {
       item.end = -1;
     }
     // if (item.parent) {
@@ -39,6 +39,7 @@ export class MethodVisitor extends NodeVisitors {
     // }
 
     item.forEachChild(c => this.makeCopy);
+
     return item;
   }
 }

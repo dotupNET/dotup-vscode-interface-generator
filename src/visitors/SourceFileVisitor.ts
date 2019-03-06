@@ -1,6 +1,6 @@
-import { NodeVisitors } from '../NodeVisitors';
-import { ClassVisitor } from "./ClassVisitor";
 import * as ts from 'typescript';
+import { ClassVisitor } from './ClassVisitor';
+import { NodeVisitors } from './NodeVisitors';
 
 export class SourceFileVisitor extends NodeVisitors {
   readonly kind: ts.SyntaxKind = ts.SyntaxKind.SourceFile;
