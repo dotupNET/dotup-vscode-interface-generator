@@ -24,6 +24,8 @@ export interface IExtendsOnly<XY, TG extends string> extends ABC {
 }
 ```
 
+![dotup-vscode-interface-generator Video](https://raw.githubusercontent.com/dotupNET/dotup-vscode-interface-generator/master/images/video2.gif)
+
 ## Installation
 
 You can browse and install extensions from within VS Code. Press `Ctrl+P` and narrow down the list commands by typing `ext install dotup-vscode-interface-generator`.
