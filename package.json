@@ -50,9 +50,11 @@
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "npm run compile && node ./node_modules/vscode/bin/test"
   },
+  "dependencies": {
+    "typescript": "^3.3.3"
+  },
   "devDependencies": {
     "tslint-microsoft-contrib": "^6.1.0",
-    "typescript": "^3.3.3",
     "typescript-parser": "^2.6.1",
     "vscode": "^1.1.30",
     "tslint": "^5.12.1",

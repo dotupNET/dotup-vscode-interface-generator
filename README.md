@@ -48,12 +48,13 @@ Existing files will be overwritten!
 
 
 ## Release Notes
-### 1.0.5
+### 1.0.7
 
 Fixed:
 - Readme: pictures not shown.
 - Readme: Wrong 'Generate interface' example
 - Icon added
+- dependencies missed
 
 TODO:
 - take over comments ( For classes, methods and properties )
