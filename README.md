@@ -2,7 +2,7 @@
 
 ## Description
 
-Interface generator is a VSCode Extension which creates an interface definition from a typescript class.
+Interface generator is a VSCode Extension which creates an interface definition from a typescript class. Supports import statements, comments, public properties and methods, generics and optional.
 
 `Given class:`
 
@@ -50,6 +50,11 @@ Existing files will be overwritten!
 
 
 ## Release Notes
+### 1.0.11
+
+Fixes/Features:
+- take over comments ( For classes, methods and properties )
+
 ### 1.0.10
 
 Fixes/Features:
