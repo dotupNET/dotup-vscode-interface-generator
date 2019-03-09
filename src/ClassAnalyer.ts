@@ -15,6 +15,8 @@ export class ClassAnalyer {
     descriptor.methods = this.getMethods(classDeclaration);
     descriptor.properties = this.getProperties(classDeclaration);
     descriptor.typeParameters = this.createTypeParameter(classDeclaration.typeParameters);
+    // tslint:disable-next-line: no-any : no-unsafe-any
+    descriptor.jsDoc = (<any>classDeclaration).jsDoc;
 
     return descriptor;
 
@@ -37,17 +39,17 @@ export class ClassAnalyer {
 
     // create method signatures
     return publicMethods.map(method => {
-      return createMethodSignature(
+      const m = createMethodSignature(
         this.createTypeParameter(method.typeParameters),
         method.parameters,
         method.type,
         method.name,
         method.questionToken
       );
-      // (<any>x).jsDoc = (<any>method).jsDoc;
-      // (<any>x).jsDoc.forEach((element: any) => {
-      //   element.parent = x;
-      // });
+
+      this.addComments(method, m);
+
+      return m;
     });
   }
 
@@ -69,16 +71,31 @@ export class ClassAnalyer {
     // create property signatures
     return publicProperties.map(property => {
 
-      return createPropertySignature(
+      const p = createPropertySignature(
         property.modifiers.filter(x => x.kind !== SyntaxKind.PublicKeyword),
         property.name,
         property.questionToken,
         property.type,
         property.initializer
       );
+
+      this.addComments(property, p);
+
+      return p;
     });
 
   }
+
+  // tslint:disable
+  addComments<TSource, TTarget>(source: TSource, target: TTarget): void {
+    const anySource = <any>source;
+    const anyTarget = <any>target;
+    if (anySource.jsDoc !== undefined) {
+      anyTarget.jsDoc = anySource.jsDoc;
+      // anyTarget.jsDoc[0].parent = anyTarget;
+    }
+  }
+  // tslint:enable
 
   createTypeParameter(typeParameters: NodeArray<TypeParameterDeclaration>): TypeParameterDeclaration[] {
     if (typeParameters === undefined) {

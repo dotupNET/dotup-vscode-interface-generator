@@ -6,6 +6,7 @@ import { OutputChannel } from 'vscode';
 import { ClassAnalyer } from './ClassAnalyer';
 import { FileDescriptor } from './FileDescriptor';
 import { InterfaceDescriptor } from './InterfaceDescriptor';
+import { InterfaceGenerator } from './InterfaceGenerator';
 
 // https://medium.com/@marvin_78330/creating-typescript-with-the-typescript-compiler-ac3370701d7f
 
@@ -85,75 +86,19 @@ export class FileAnalyser {
 
     }
 
+    const generator = new InterfaceGenerator();
+
     // For each interface
     fd.interfaceDescriptors.forEach(item => {
 
       this.out.appendLine(`Build nodes for ${item.interfaceName}`);
 
-      // Complete interface
-      // const ifg = new InterfaceGenerator();
-      // const ifDeclaration = ifg.getInterfaceDeclaration(item);
-      // result.push(ifDeclaration);
-      // result.push(ts.createIdentifier('interface'));
+      const interfaceNodes = generator.buildNodes(item);
+      result.push(...interfaceNodes);
 
-      // Type parameter
-      // const tp = item.typeParameters.map(p => {
-      //   return p.name.text;
-      // });
-
-      // let typeParameter = '';
-      // if (tp.length > 0) {
-      //   typeParameter = `<${tp.join(', ')}>`;
-      // }
-      // // Interface
-      // const interfaceStatement = `export interface ${item.interfaceName}${typeParameter} {`;
-      const identifier = createIdentifier(this.getInterfaceDeclaration(item));
-
-      result.push(identifier);
-
-      // Properties
-      result.push(...item.getPropertiesAsNode());
-
-      // New line
-      result.push(createToken(SyntaxKind.NewLineTrivia));
-
-      // Methods
-      result.push(...item.getMethodsAsNode());
-
-      // New line
-      result.push(createToken(SyntaxKind.NewLineTrivia));
-
-      // Closing brace
-      const closeBrace = createToken(SyntaxKind.CloseBraceToken);
-      result.push(closeBrace);
     });
 
     fd.nodes = result;
-  }
-
-  getInterfaceDeclaration(item: InterfaceDescriptor): string {
-    let result = item.classDeclaration.replace('class', 'interface');
-    result = result.replace(item.className, item.interfaceName);
-    // export class ExtendsOnly<XY, TG extends string> extends ABC {
-    // =>
-    // export class ExtendsOnly<XY, TG extends string>
-    // const withTypeParameters = result.match(/.+?(?=>)./);
-    // if (withTypeParameters !== null) {
-    //   return `${withTypeParameters[0]} {`;
-    // }
-
-    // 'extends' clause must precede 'implements' clause.ts(1173)
-    // const extendsParameters = result.match(/.+?(?=extends)/);
-    // if (extendsParameters !== null) {
-    //   return `${extendsParameters[0]} {`;
-    // }
-
-    const implementsParameters = result.match(/.+?(?=implements)/);
-    if (implementsParameters !== null) {
-      return `${implementsParameters[0]} {`;
-    }
-
-    return result;
   }
 
   createInterfaceFile(): SourceFile {
@@ -167,9 +112,17 @@ export class FileAnalyser {
       ScriptKind.TS
     );
 
-    const printer = createPrinter({
-      newLine: NewLineKind.CarriageReturnLineFeed
-    });
+    const printer = createPrinter(
+      {
+        newLine: NewLineKind.CarriageReturnLineFeed
+      },
+      {
+        substituteNode(hint, node) {
+          // perform substitution if necessary...
+          return node;
+        }
+      }
+    );
 
     // const result = printer.printNode(
     //   EmitHint.Unspecified,

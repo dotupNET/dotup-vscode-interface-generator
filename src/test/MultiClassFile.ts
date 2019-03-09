@@ -1,21 +1,12 @@
 // tslint:disable
 import { InterfaceDeclaration } from 'typescript';
-import { IEmptyInterface, EmptyClass } from './Class2';
 
-/**
- * My class comment on ExtendsOnly
- */
-export class ExtendsOnly<A, B extends string> extends EmptyClass {
-  /**
-   * ExtendsOnly prop1 is nice
-   * 
-   * https://github.com/dotupNET?tab=repositories
-   */
+interface IEmptyInterface { }
+class EmptyClass { }
+
+export class ExtendsOnly<A, B extends string>  {
   public prop1: number = 2;
   public PublicProp1?: string = '';
-  /**
-   * comment on private property
-   */
   private PrivateProp1: string = '';
 
   private privateMethod() {
@@ -23,7 +14,7 @@ export class ExtendsOnly<A, B extends string> extends EmptyClass {
   }
 
   /**
-   * My ExtendsOnly Comment on PublicMethod
+   * My Comment on PublicMethod
    */
   public PublicMethod(): string {
     return ';';
@@ -52,7 +43,7 @@ export class ImplementsOnly<C, D extends string> implements IEmptyInterface {
   }
 
   /**
-   * My ImplementsOnly Comment on PublicMethod
+   * My Comment on PublicMethod
    */
   public PublicMethod(): string {
     return ';';
@@ -81,7 +72,7 @@ export class ExtendsAndImplements<E, F extends string> extends EmptyClass implem
   }
 
   /**
-   * My ExtendsAndImplements Comment on PublicMethod
+   * My Comment on PublicMethod
    */
   public PublicMethod(): string {
     return ';';
@@ -110,7 +101,7 @@ export class ExtendsAndImplementsWithoutTypeParameter extends EmptyClass impleme
   }
 
   /**
-   * My ExtendsAndImplementsWithoutTypeParameter Comment on PublicMethod
+   * My Comment on PublicMethod
    */
   public PublicMethod(): string {
     return ';';

@@ -7,6 +7,7 @@ export class InterfaceDescriptor {
   typeParameters: TypeParameterDeclaration[];
   heritageClauses: HeritageClause[];
   classDeclaration: string;
+  jsDoc: Node[];
   get interfaceName(): string {
     return `I${this.className}`;
   }
