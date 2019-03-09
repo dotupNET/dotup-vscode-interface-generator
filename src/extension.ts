@@ -1,107 +1,98 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import * as fs from 'fs';
-import * as vscode from 'vscode';
-import { FileAnalyser } from './FileAnalyser';
-
+import { VsCodeExtensions } from 'dotup-vscode-api-extensions';
+import { ExtensionContext } from 'vscode';
+import { InterfaceGeneratorCommand } from './InterfaceGeneratorCommand';
 /*
   https://code.visualstudio.com/api/working-with-extensions/publishing-extension
 */
 
-export class ThenablePromise<T> { // extends Promise<T> {
-  promise: Promise<T>;
-
-  constructor(ten: Thenable<T>) {
-    // super((resolve, reject) => ten.then(resolve, reject));
-    this.promise = new Promise<T>((resolve, reject) => ten.then(resolve, reject));
-  }
-
-  async await(): Promise<T> {
-    return this.promise;
-  }
-}
-
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+// tslint:disable-next-line: max-func-body-length
+export function activate(context: ExtensionContext) {
 
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
   console.log('"dotup-vscode-interface-generator" activated!');
 
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
-  const disposable = vscode.commands.registerCommand('extension.dotupGenerateInterface', async () => {
-    // The code you place here will be executed every time your command is executed
-    const editor = vscode.window.activeTextEditor;
+  const ex = new VsCodeExtensions(context);
+  ex.addCommand(new InterfaceGeneratorCommand());
+  ex.registerCommands();
 
-    if (editor !== undefined) {
-      const { document, selection } = editor;
+  // // The command has been defined in the package.json file
+  // // Now provide the implementation of the command with registerCommand
+  // // The commandId parameter must match the command field in package.json
+  // const disposable = commands.registerCommand('extension.dotupGenerateInterface', async () => {
+  //   // The code you place here will be executed every time your command is executed
+  //   const editor = window.activeTextEditor;
 
-      const out = vscode.window.createOutputChannel('Interface generator');
-      out.clear();
-      out.show(true);
+  //   if (editor !== undefined) {
+  //     const { document, selection } = editor;
 
-      // Get path
-      //      const rootPath = vscode.workspace.rootPath;
-      const sourceFilePath = document.uri.fsPath;
+  //     const out = window.createOutputChannel('Interface generator');
+  //     out.clear();
+  //     out.show(true);
 
-      const fileAnalyser = new FileAnalyser(sourceFilePath, out);
+  //     // Get path
+  //     //      const rootPath = workspace.rootPath;
+  //     const sourceFilePath = document.uri.fsPath;
 
-      // Generate interface
-      fileAnalyser.analyseFile();
+  //     const fileAnalyser = new FileAnalyser(sourceFilePath, out);
 
-      // Is there a valid source file?
-      if (fileAnalyser.fileDescriptor.isSourceValid()) {
+  //     // Generate interface
+  //     fileAnalyser.analyseFile();
 
-        fileAnalyser.buildNodes();
+  //     // Is there a valid source file?
+  //     if (fileAnalyser.fileDescriptor.isSourceValid()) {
 
-        if (fs.existsSync(fileAnalyser.interfaceFilePath)) {
-          // Delete content of existing file
-          // fs.unlinkSync(fileAnalyser.interfaceFilePath);
-        } else {
-          // Create new interface file
-          fs.closeSync(fs.openSync(fileAnalyser.interfaceFilePath, 'w'));
-        }
+  //       fileAnalyser.buildNodes();
 
-        // Create interface file
-        const interfaceFile = fileAnalyser.createInterfaceFile();
+  //       if (fs.existsSync(fileAnalyser.interfaceFilePath)) {
+  //         // Delete content of existing file
+  //         // fs.unlinkSync(fileAnalyser.interfaceFilePath);
+  //       } else {
+  //         // Create new interface file
+  //         fs.closeSync(fs.openSync(fileAnalyser.interfaceFilePath, 'w'));
+  //       }
 
-        fs.writeFileSync(fileAnalyser.interfaceFilePath, interfaceFile.text);
+  //       // Create interface file
+  //       const interfaceFile = fileAnalyser.createInterfaceFile();
 
-        // Open document
-        const doc = await new ThenablePromise(vscode.workspace.openTextDocument(fileAnalyser.interfaceFilePath)).promise;
+  //       fs.writeFileSync(fileAnalyser.interfaceFilePath, interfaceFile.text);
 
-        await new ThenablePromise(vscode.window.showTextDocument(doc)).promise;
+  //       // Open document
+  //       const doc = await new ThenablePromise(workspace.openTextDocument(fileAnalyser.interfaceFilePath)).promise;
 
-        // Insert interface text
-        // const newEditor = await new ThenablePromise(vscode.window.showTextDocument(doc)).await();
-        // const newEditor = await new Promise() vscode.window.showTextDocument(doc).then;
-        // const endLine = newEditor.document.lineCount;
-        // const lastCharIndex = newEditor.document.lineAt(endLine - 1).text.length;
+  //       await new ThenablePromise(window.showTextDocument(doc)).promise;
 
-        // newEditor.edit((ed) => {
-        //   ed.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(endLine, lastCharIndex)));
-        //   ed.insert(doc.positionAt(0), interfaceFile.text);
-        // });
+  //       // Insert interface text
+  //       // const newEditor = await new ThenablePromise(window.showTextDocument(doc)).await();
+  //       // const newEditor = await new Promise() window.showTextDocument(doc).then;
+  //       // const endLine = newEditor.document.lineCount;
+  //       // const lastCharIndex = newEditor.document.lineAt(endLine - 1).text.length;
 
-        // // And save
-        // await new ThenablePromise(doc.save()).await();
+  //       // newEditor.edit((ed) => {
+  //       //   ed.delete(new Range(new Position(0, 0), new Position(endLine, lastCharIndex)));
+  //       //   ed.insert(doc.positionAt(0), interfaceFile.text);
+  //       // });
 
-        // Display a message box to the user
-        out.appendLine('Interface generation completed.');
-        // await new ThenablePromise(vscode.window.showInformationMessage('Interface generation completed.')).promise;
+  //       // // And save
+  //       // await new ThenablePromise(doc.save()).await();
 
-      } else {
-        vscode.window.showErrorMessage('Invalid source file!');
-      }
+  //       // Display a message box to the user
+  //       out.appendLine('Interface generation completed.');
+  //       // await new ThenablePromise(window.showInformationMessage('Interface generation completed.')).promise;
 
-    }
+  //     } else {
+  //       window.showErrorMessage('Invalid source file!');
+  //     }
 
-  });
+  //   }
 
-  context.subscriptions.push(disposable);
+  // });
+
+  // context.subscriptions.push(disposable);
 
 }
 
