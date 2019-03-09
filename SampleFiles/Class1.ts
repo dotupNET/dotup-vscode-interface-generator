@@ -1,8 +1,9 @@
 // tslint:disable
 import { InterfaceDeclaration } from 'typescript';
+// a comment
 import { IEmptyInterface, EmptyClass } from './Class2';
 
-/**
+/*
  * My class comment on ExtendsOnly
  */
 export class ExtendsOnly<A, B extends string> extends EmptyClass {
@@ -12,6 +13,7 @@ export class ExtendsOnly<A, B extends string> extends EmptyClass {
    * https://github.com/dotupNET?tab=repositories
    */
   public prop1: number = 2;
+  // normal comment
   public PublicProp1?: string = '';
   /**
    * comment on private property
@@ -29,10 +31,12 @@ export class ExtendsOnly<A, B extends string> extends EmptyClass {
     return ';';
   }
 
+  // single line PublicMethodWithoutPublic
   PublicMethodWithoutPublic(arg: InterfaceDeclaration) {
 
   }
 
+  /* multiline comment on PublicMethodWithoutPublicVoid */
   PublicMethodWithoutPublicVoid(arg: string): void {
 
   }

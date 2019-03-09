@@ -84,7 +84,7 @@ export class InterfaceGeneratorCommand implements IRegisterCommandHandler {
       // await new ThenablePromise(doc.save()).await();
 
       // Display a message box to the user
-      out.appendLine('Interface generation completed.');
+      out.appendLine(`Interface generation completed. File: ${path.basename(interfaceFilePath)}`);
       // await new ThenablePromise(window.showInformationMessage('Interface generation completed.')).promise;
 
     } else {
