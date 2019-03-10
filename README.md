@@ -56,9 +56,8 @@ Fixes/Features:
 - Update readme :)
 
 ### 1.0.12
-
 Fixes/Features:
-- fix #1
+- [fix #1](https://github.com/dotupNET/dotup-vscode-interface-generator/issues/1)
 
 ### 1.0.11
 
