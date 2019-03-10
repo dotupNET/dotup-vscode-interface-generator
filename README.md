@@ -50,6 +50,16 @@ Existing files will be overwritten!
 
 
 ## Release Notes
+### 1.0.13
+
+Fixes/Features:
+- Update readme :)
+
+### 1.0.12
+
+Fixes/Features:
+- fix #1
+
 ### 1.0.11
 
 Fixes/Features:
