@@ -14,9 +14,6 @@
     "Snippets",
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:extension.dotupGenerateInterface"
-  ],
   "main": "./out/extension.js",
   "repository": {
     "type": "git",
@@ -33,13 +30,36 @@
   "author": "Peter Ullrich, dotup IT solutions",
   "license": "MIT",
   "icon": "images/tsi_logo_128.png",
+  "activationEvents": [
+    "onCommand:extension.dotupGenerateInterface",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
   "contributes": {
     "commands": [
       {
         "command": "extension.dotupGenerateInterface",
         "title": "Generate interface"
+      },
+      {
+        "command": "extension.dotupGenerateTestFile",
+        "title": "Generate test file"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "resourceLangId == typescript",
+          "command": "extension.dotupGenerateTestFile",
+          "group": "2_workspace"
+        },
+        {
+          "when": "resourceLangId == typescriptreact",
+          "command": "extension.dotupGenerateTestFile",
+          "group": "2_workspace"
+        }
+      ]
+    }
   },
   "scripts": {
     "test-mocha": "node node_modules/mocha/bin/mocha --require ts-node/register src/test/*.test.ts --reporter spec",

@@ -1,7 +1,9 @@
 // tslint:disable
 import { InterfaceDeclaration } from 'typescript';
+import { IEmptyInterface } from './IEmptyInterface';
 // a comment
-import { IEmptyInterface, EmptyClass } from './Class2';
+import { EmptyClass } from './Class2';
+
 
 /*
  * My class comment on ExtendsOnly

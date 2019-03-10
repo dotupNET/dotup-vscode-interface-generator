@@ -2,6 +2,7 @@
 import { FileAnalyser, InterfaceGenerator, IRegisterCommandHandler, SourceFileWriter, SourceToTargetFileConverter, ThenablePromise } from 'dotup-vscode-api-extensions';
 import * as path from 'path';
 import { OutputChannel, window, workspace } from 'vscode';
+import { CommandNames } from './extension';
 
 /*
   https://code.visualstudio.com/api/working-with-extensions/publishing-extension
@@ -15,7 +16,7 @@ export class InterfaceGeneratorCommand implements IRegisterCommandHandler {
   }
   kindo: 'IRegisterCommandHandler';
 
-  commandName: string = 'extension.dotupGenerateInterface';
+  commandName: string = CommandNames.generateInterface;
 
   // tslint:disable-next-line: no-any
   async callback(...args: any[]): Promise<void> {

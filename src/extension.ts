@@ -3,9 +3,15 @@
 import { VsCodeExtensions } from 'dotup-vscode-api-extensions';
 import { ExtensionContext } from 'vscode';
 import { InterfaceGeneratorCommand } from './InterfaceGeneratorCommand';
+import { TestFileGeneratorCommand } from './TestFileGeneratorCommand';
 /*
   https://code.visualstudio.com/api/working-with-extensions/publishing-extension
 */
+
+export enum CommandNames {
+  generateInterface = 'extension.dotupGenerateInterface',
+  generateTestFile = 'extension.dotupGenerateTestFile'
+}
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -18,6 +24,7 @@ export function activate(context: ExtensionContext) {
 
   const ex = new VsCodeExtensions(context);
   ex.addCommand(new InterfaceGeneratorCommand());
+  // ex.addCommand(new TestFileGeneratorCommand());
   ex.registerCommands();
 
   // // The command has been defined in the package.json file

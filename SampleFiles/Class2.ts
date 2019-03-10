@@ -2,8 +2,13 @@
 import { InterfaceDeclaration } from 'typescript';
 
 export class EmptyClass {
+  p: string;
 
-}
-export interface IEmptyInterface {
+  constructor(p: string) {
+    this.p = p;
+  }
 
+  jo(stringi: string): void {
+    console.log(stringi);
+  }
 }
