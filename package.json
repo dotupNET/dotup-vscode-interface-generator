@@ -40,26 +40,8 @@
       {
         "command": "extension.dotupGenerateInterface",
         "title": "Generate interface"
-      },
-      {
-        "command": "extension.dotupGenerateTestFile",
-        "title": "Generate test file"
       }
-    ],
-    "menus": {
-      "explorer/context": [
-        {
-          "when": "resourceLangId == typescript",
-          "command": "extension.dotupGenerateTestFile",
-          "group": "2_workspace"
-        },
-        {
-          "when": "resourceLangId == typescriptreact",
-          "command": "extension.dotupGenerateTestFile",
-          "group": "2_workspace"
-        }
-      ]
-    }
+    ]
   },
   "scripts": {
     "test-mocha": "node node_modules/mocha/bin/mocha --require ts-node/register src/test/*.test.ts --reporter spec",
@@ -73,7 +55,7 @@
   },
   "dependencies": {
     "typescript": "^3.3.3",
-    "dotup-vscode-api-extensions": "0.0.1"
+    "dotup-vscode-api-extensions": "0.0.3"
   },
   "devDependencies": {
     "@types/node": "^11.10.4",
