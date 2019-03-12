@@ -3,7 +3,7 @@
 import { VsCodeExtensions } from 'dotup-vscode-api-extensions';
 import { ExtensionContext } from 'vscode';
 import { InterfaceGeneratorCommand } from './InterfaceGeneratorCommand';
-import { TestFileGeneratorCommand } from './TestFileGeneratorCommand';
+import { InterfaceGeneratorCommand1 } from './InterfaceGeneratorCommand.1';
 /*
   https://code.visualstudio.com/api/working-with-extensions/publishing-extension
 */
@@ -23,8 +23,7 @@ export function activate(context: ExtensionContext) {
   console.log('"dotup-vscode-interface-generator" activated!');
 
   const ex = new VsCodeExtensions(context);
-  ex.addCommand(new InterfaceGeneratorCommand());
-  // ex.addCommand(new TestFileGeneratorCommand());
+  ex.addCommand(new InterfaceGeneratorCommand1());
   ex.registerCommands();
 
   // // The command has been defined in the package.json file

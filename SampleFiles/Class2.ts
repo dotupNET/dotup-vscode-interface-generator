@@ -8,7 +8,11 @@ export class EmptyClass {
     this.p = p;
   }
 
-  jo(stringi: string): void {
+  jo(stringi: string, callback: () => void): void {
+    console.log(stringi);
+  }
+
+  opt(stringi: string, opti?: number): void {
     console.log(stringi);
   }
 }

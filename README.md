@@ -50,6 +50,12 @@ Existing files will be overwritten!
 
 
 ## Release Notes
+### 1.0.14
+
+Fixes/Features:
+- Explorer context menu "Generate interface"
+- Error handling
+
 ### 1.0.13
 
 Fixes/Features:
