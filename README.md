@@ -50,6 +50,12 @@ Existing files will be overwritten!
 
 
 ## Release Notes
+### 1.0.15
+
+Fixes/Features:
+- Packages not included
+
+## Release Notes
 ### 1.0.14
 
 Fixes/Features:
