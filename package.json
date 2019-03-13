@@ -42,6 +42,10 @@
         "title": "Generate interface"
       }
     ],
+    "keybindings": {
+      "command": "extension.dotupGenerateInterface",
+      "key": "Ctrl+Alt+i"
+    },
     "menus": {
       "explorer/context": [
         {
